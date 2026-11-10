@@ -1,0 +1,131 @@
+kind: MCPTools
+apiVersion: api.ibm.com/v1
+metadata:
+  name: plant-ops-api-mcp-tool-26hq7
+  namespace: plant-ops
+  version: 1.0.0
+  tags: []
+  description: Demo manufacturing operations API (inventory, equipment, work orders,
+    employees).
+  domain: mcp
+spec:
+  tools:
+  - name: listInventory
+    description: List spare parts inventory
+    inputSchema:
+      type: object
+      properties:
+        below_reorder:
+          description: Only parts at or below reorder point
+          x-parameter-location: query
+          type: boolean
+          title: Below Reorder
+    title: List spare parts inventory
+    x-api-binding:
+      operationPath: /inventory
+      operationMethod: GET
+      api:
+        $path: ./plant-ops-api-spec.yml
+  - name: getPart
+    description: Get stock for one spare part
+    inputSchema:
+      type: object
+      properties:
+        part:
+          description: part parameter
+          x-parameter-location: path
+          type: string
+          title: Part
+      required:
+      - part
+    title: Get stock for one spare part
+    x-api-binding:
+      operationPath: /inventory/{part}
+      operationMethod: GET
+      api:
+        $path: ./plant-ops-api-spec.yml
+  - name: getEquipmentStatus
+    description: Get equipment status and OEE
+    inputSchema:
+      type: object
+      properties:
+        equipment_id:
+          description: equipment_id parameter
+          x-parameter-location: path
+          type: string
+          title: Equipment Id
+      required:
+      - equipment_id
+    title: Get equipment status and OEE
+    x-api-binding:
+      operationPath: /equipment/{equipment_id}/status
+      operationMethod: GET
+      api:
+        $path: ./plant-ops-api-spec.yml
+  - name: searchWorkOrders
+    description: Search work orders by free text
+    inputSchema:
+      type: object
+      properties:
+        q:
+          description: Free-text search on issue (passed to a SQL LIKE in the real
+            system)
+          x-parameter-location: query
+          type: string
+          title: Q
+    title: Search work orders by free text
+    x-api-binding:
+      operationPath: /work-orders
+      operationMethod: GET
+      api:
+        $path: ./plant-ops-api-spec.yml
+  - name: createWorkOrder
+    description: Create a maintenance work order
+    inputSchema:
+      type: object
+      properties:
+        equipmentId:
+          type: string
+          title: Equipmentid
+          description: Equipment ID
+          examples:
+          - CNC-07
+        issue:
+          type: string
+          title: Issue
+          description: Problem description
+          examples:
+          - Spindle overheat alarm E-102
+        priority:
+          type: string
+          pattern: ^(low|medium|high)$
+          title: Priority
+          description: low, medium or high
+          default: medium
+      required:
+      - equipmentId
+      - issue
+    title: Create a maintenance work order
+    x-api-binding:
+      operationPath: /work-orders
+      operationMethod: POST
+      api:
+        $path: ./plant-ops-api-spec.yml
+  - name: getEmployee
+    description: Get employee contact record (contains PII)
+    inputSchema:
+      type: object
+      properties:
+        employee_id:
+          description: employee_id parameter
+          x-parameter-location: path
+          type: string
+          title: Employee Id
+      required:
+      - employee_id
+    title: Get employee contact record (contains PII)
+    x-api-binding:
+      operationPath: /employees/{employee_id}
+      operationMethod: GET
+      api:
+        $path: ./plant-ops-api-spec.yml

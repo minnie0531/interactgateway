@@ -1,0 +1,57 @@
+kind: MCPTools
+apiVersion: api.ibm.com/v1
+metadata:
+  name: plant-knowledge-tool-ei3mr
+  namespace: plant-knowledge
+  version: 1.0.0
+  tags: []
+  description: Plant knowledge MCP (SOP search, shift schedule, OEE)
+  domain: mcp
+spec:
+  tools:
+    - name: search_sop
+      title: search_sop
+      description: Search standard operating procedures (SOP) by keyword, for example
+        lockout, spindle or welding.
+      inputSchema:
+        properties:
+          keyword:
+            title: Keyword
+            type: string
+        required:
+          - keyword
+        title: search_sopArguments
+        type: object
+    - name: get_shift_schedule
+      title: get_shift_schedule
+      description: Return the maintenance shift schedule for a date in YYYY-MM-DD format.
+      inputSchema:
+        properties:
+          date:
+            title: Date
+            type: string
+        required:
+          - date
+        title: get_shift_scheduleArguments
+        type: object
+    - name: calc_oee
+      title: calc_oee
+      description: Calculate OEE from availability, performance and quality ratios
+        between 0 and 1.
+      inputSchema:
+        properties:
+          availability:
+            title: Availability
+            type: number
+          performance:
+            title: Performance
+            type: number
+          quality:
+            title: Quality
+            type: number
+        required:
+          - availability
+          - performance
+          - quality
+        title: calc_oeeArguments
+        type: object

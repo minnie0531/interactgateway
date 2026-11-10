@@ -1,0 +1,14 @@
+kind: Plan
+apiVersion: api.ibm.com/v1
+metadata:
+  name: plant-ops-plan-26hq7
+  namespace: plant-ops
+  version: 1.0.0
+  tags: []
+  description: ""
+  domain: mcp
+spec:
+  qos:
+    withQuota:
+      plant-ops-plan-26hq7-limit:
+        - $ref: plant-ops:plant-ops-quota-26hq7:1.0.0

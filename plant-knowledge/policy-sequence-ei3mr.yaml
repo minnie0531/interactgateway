@@ -1,0 +1,19 @@
+kind: FreeFlowPolicySequence
+apiVersion: api.ibm.com/v1
+metadata:
+  name: policy-sequence-ei3mr
+  namespace: plant-knowledge
+  version: 1.0.0
+  tags: []
+  domain: mcp
+  labels:
+    gatewayTypes:
+    - nano
+spec:
+  main:
+  - $ref: plant-knowledge:ExtractIdentity-ei3mr:1.0.0
+  - $ref: plant-knowledge:Authenticate-ei3mr:1.0.0
+  - $ref: plant-knowledge:set-upstream-key-ei3mr:1.0.0
+  - $ref: plant-knowledge:mcp-invoke-ei3mr:1.0.0
+  monitoring:
+    $ref: plant-knowledge:telemetry-ei3mr:1.0.0

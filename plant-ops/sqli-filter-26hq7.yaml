@@ -1,0 +1,21 @@
+kind: SQLInjectionFilter
+apiVersion: api.ibm.com/v1
+metadata:
+  name: sqli-filter-26hq7
+  namespace: plant-ops
+  version: 1.0.0
+  tags: []
+  labels:
+    gatewayTypes:
+    - nano
+spec:
+  message: request
+  filterOn: body
+  injectionRules:
+    predefined:
+    - likeMatch
+    - keywordInjection
+    - orAndAttack
+    - metacharacters
+    - commands
+    custom: []

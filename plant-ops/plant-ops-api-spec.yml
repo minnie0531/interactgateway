@@ -1,0 +1,207 @@
+openapi: 3.0.3
+info:
+  title: Plant Ops API
+  description: Demo manufacturing operations API (inventory, equipment, work orders,
+    employees).
+  version: 1.0.0
+paths:
+  /inventory:
+    get:
+      summary: List spare parts inventory
+      operationId: listInventory
+      parameters:
+      - name: below_reorder
+        in: query
+        required: false
+        schema:
+          type: boolean
+          description: Only parts at or below reorder point
+          title: Below Reorder
+        description: Only parts at or below reorder point
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /inventory/{part}:
+    get:
+      summary: Get stock for one spare part
+      operationId: getPart
+      parameters:
+      - name: part
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Part
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /equipment/{equipment_id}/status:
+    get:
+      summary: Get equipment status and OEE
+      operationId: getEquipmentStatus
+      parameters:
+      - name: equipment_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Equipment Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /work-orders:
+    get:
+      summary: Search work orders by free text
+      operationId: searchWorkOrders
+      parameters:
+      - name: q
+        in: query
+        required: false
+        schema:
+          type: string
+          description: Free-text search on issue (passed to a SQL LIKE in the real
+            system)
+          title: Q
+        description: Free-text search on issue (passed to a SQL LIKE in the real system)
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    post:
+      summary: Create a maintenance work order
+      operationId: createWorkOrder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkOrderIn'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /employees/{employee_id}:
+    get:
+      summary: Get employee contact record (contains PII)
+      operationId: getEmployee
+      parameters:
+      - name: employee_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Employee Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    WorkOrderIn:
+      properties:
+        equipmentId:
+          type: string
+          title: Equipmentid
+          description: Equipment ID
+          examples:
+          - CNC-07
+        issue:
+          type: string
+          title: Issue
+          description: Problem description
+          examples:
+          - Spindle overheat alarm E-102
+        priority:
+          type: string
+          pattern: ^(low|medium|high)$
+          title: Priority
+          description: low, medium or high
+          default: medium
+      type: object
+      required:
+      - equipmentId
+      - issue
+      title: WorkOrderIn
+servers:
+- url: http://plant-ops-api.idig-demo.svc:8080

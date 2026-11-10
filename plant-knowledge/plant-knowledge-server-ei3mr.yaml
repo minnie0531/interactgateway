@@ -1,0 +1,18 @@
+kind: MCPServer
+apiVersion: api.ibm.com/v1
+metadata:
+  name: plant-knowledge-server-ei3mr
+  namespace: plant-knowledge
+  version: 1.0.0
+  tags: []
+  domain: mcp
+spec:
+  title: plant-knowledge
+  protocolVersion: V2025_11_25
+  policy-sequence:
+    - $ref: plant-knowledge:policy-sequence-ei3mr:1.0.0
+  capabilities:
+    tools:
+      - $ref: plant-knowledge:plant-knowledge-tool-ei3mr:1.0.0
+  plans:
+    - $ref: plant-knowledge:plan-ei3mr:1.0.0

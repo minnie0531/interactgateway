@@ -1,0 +1,14 @@
+kind: Authenticate
+apiVersion: api.ibm.com/v1
+metadata:
+  name: Authenticate-sn6c7
+  namespace: plant-ops
+  version: 1.0.0
+  tags: []
+  labels:
+    gatewayTypes:
+      - nano
+spec:
+  operation:
+    subscription: {}
+  namespace: client

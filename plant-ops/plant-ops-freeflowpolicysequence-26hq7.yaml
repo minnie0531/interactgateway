@@ -1,0 +1,20 @@
+kind: FreeFlowPolicySequence
+apiVersion: api.ibm.com/v1
+metadata:
+  name: plant-ops-freeflowpolicysequence-26hq7
+  namespace: plant-ops
+  version: 1.0.0
+  tags: []
+  domain: mcp
+  labels:
+    gatewayTypes:
+    - nano
+spec:
+  main:
+  - $ref: plant-ops:ExtractIdentity-zmuoa:1.0.0
+  - $ref: plant-ops:Authenticate-sn6c7:1.0.0
+  - $ref: plant-ops:sqli-filter-26hq7:1.0.0
+  - $ref: plant-ops:invoke-26hq7:1.0.0
+  - $ref: plant-ops:redact-pii-26hq7:1.0.0
+  monitoring:
+    $ref: plant-ops:telemetry-26hq7:1.0.0

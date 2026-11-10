@@ -1,0 +1,18 @@
+kind: MCPServer
+apiVersion: api.ibm.com/v1
+metadata:
+  name: plant-ops-api-mcp-server-26hq7
+  namespace: plant-ops
+  version: 1.0.0
+  tags: []
+  domain: mcp
+spec:
+  title: Plant Ops API MCP Server
+  protocolVersion: V2025_11_25
+  policy-sequence:
+    - $ref: plant-ops:plant-ops-freeflowpolicysequence-26hq7:1.0.0
+  capabilities:
+    tools:
+      - $ref: plant-ops:plant-ops-api-mcp-tool-26hq7:1.0.0
+  plans:
+    - $ref: plant-ops:plant-ops-plan-26hq7:1.0.0

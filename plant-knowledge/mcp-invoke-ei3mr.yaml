@@ -1,0 +1,26 @@
+kind: MCPInvoke
+apiVersion: api.ibm.com/v1
+metadata:
+  name: mcp-invoke-ei3mr
+  namespace: plant-knowledge
+  version: 1.0.0
+  tags: []
+  domain: mcp
+  labels:
+    gatewayTypes:
+    - nano
+spec:
+  input: request
+  endpoint:
+    httpSse:
+      serverUrl:
+        plain:
+          value: http://plant-knowledge-mcp.idig-demo.svc:8080/mcp
+      timeout: 30
+      tlsClientProfile: sample-tls-client-profile:1.0.0
+    primitive:
+      tool:
+        name:
+          plain:
+            value: tool_name
+        output: response

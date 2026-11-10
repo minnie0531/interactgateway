@@ -1,0 +1,14 @@
+kind: Plan
+apiVersion: api.ibm.com/v1
+metadata:
+  name: plan-ei3mr
+  namespace: plant-knowledge
+  version: 1.0.0
+  tags: []
+  description: "Standard access - 1000 requests per minute"
+  domain: mcp
+spec:
+  qos:
+    withQuota:
+      plan-ei3mr-limit:
+        - $ref: plant-knowledgeuota-ei3mr:1.0.0

@@ -1,0 +1,19 @@
+projects:
+  plant-ops:
+    id: 2s2gakwpyi
+    description: Plant Ops REST API exposed as MCP server (inventory, equipment, work
+      orders, employees) with subscription auth, SQL injection filter and PII redaction
+    tags:
+    - mcp
+    - rest-to-mcp
+    - demo
+    createdAt: 1794273963389
+  plant-knowledge:
+    id: cpx6xee9lc
+    description: External MCP server (SOP search, shift schedule, OEE) registered
+      behind the gateway with upstream API key injection
+    tags:
+    - mcp
+    - external-mcp
+    - demo
+    createdAt: 1794273963389

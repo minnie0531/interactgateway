@@ -1,0 +1,18 @@
+kind: Redact
+apiVersion: api.ibm.com/v1
+metadata:
+  name: redact-pii-26hq7
+  namespace: plant-ops
+  version: 1.0.0
+  tags: []
+  labels:
+    gatewayTypes:
+    - nano
+spec:
+  message:
+    messageName: response
+    body:
+      captures:
+        jsonata:
+        - residentNumber
+        - phone
