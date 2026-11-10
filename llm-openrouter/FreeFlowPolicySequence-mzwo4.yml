@@ -1,0 +1,24 @@
+kind: FreeFlowPolicySequence
+apiVersion: api.ibm.com/v1
+metadata:
+  name: freeflowpolicysequence-openrouter-proxy-mzwo4
+  namespace: llm-openrouter
+  version: 1.0.0
+  tags: []
+  domain: ai-platform
+  labels:
+    gatewayTypes:
+      - nano
+spec:
+  main:
+    - $ref: llm-openrouter:ExtractIdentity-mzwo4:1.0.0
+    - $ref: llm-openrouter:Authenticate-mzwo4:1.0.0
+    - $ref: llm-openrouter:Authorize-mzwo4:1.0.0
+    - $ref: llm-openrouter:If-mzwo4:1.0.0
+    - $ref: llm-openrouter:OperationSwitch-mzwo4:1.0.0
+  monitoring:
+    $ref: llm-openrouter:Telemetry-mzwo4:1.0.0
+  error:
+    - errorType: []
+      execute:
+        - $ref: llm-openrouter:Throw-mzwo4:1.0.0

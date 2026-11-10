@@ -1,0 +1,14 @@
+kind: Plan
+apiVersion: api.ibm.com/v1
+metadata:
+  name: plan-openrouter-proxy-mzwo4
+  namespace: llm-openrouter
+  version: 1.0.0
+  tags: []
+  description: ''
+  domain: ai-platform
+spec:
+  qos:
+    withQuota:
+      openai-token-weighted:
+        - $ref: llm-openrouter:openai-token-weighted-mzwo4:1.0.0

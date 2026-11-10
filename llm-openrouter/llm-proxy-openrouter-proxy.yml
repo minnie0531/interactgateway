@@ -1,0 +1,33 @@
+kind: LLMProxy
+apiVersion: api.ibm.com/v1
+metadata:
+  name: openrouter-proxy
+  namespace: llm-openrouter
+  version: 1.0.0
+  tags: []
+  domain: ai-platform
+  description: ''
+  labels:
+    gatewayTypes:
+    - nano
+spec:
+  title: openrouter-proxy
+  providers:
+  - llm-openrouter:openrouter:1.0.0
+  providerType: custom
+  basePath: /openrouter
+  selectedModels:
+  - id: qwen/qwen3-235b-a22b-2507
+    displayName: Qwen3 235B A22B 2507
+    capabilities:
+    - chat
+    - completions
+  - id: z-ai/glm-5.3-flash
+    displayName: GLM 5.3 Flash
+    capabilities:
+    - chat
+    - completions
+  plan:
+    $ref: llm-openrouter:plan-openrouter-proxy-mzwo4:1.0.0
+  policy-sequence:
+  - $ref: llm-openrouter:freeflowpolicysequence-openrouter-proxy-mzwo4:1.0.0

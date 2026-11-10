@@ -1,0 +1,26 @@
+kind: Telemetry
+apiVersion: api.ibm.com/v1
+metadata:
+  name: Telemetry-mzwo4
+  namespace: llm-openrouter
+  version: 1.0.0
+  tags: []
+  domain: ai-platform
+  labels:
+    gatewayTypes:
+      - nano
+spec:
+  verbosity:
+    - level: basic
+      onSuccessTrimTo: normal
+      inboundLevel: basic
+      outboundLevel: basic
+      operations:
+        - path: /chat/completions
+          method: POST
+        - path: /embeddings
+          method: POST
+        - path: /models
+          method: GET
+        - path: /models/{a_model_id}
+          method: GET

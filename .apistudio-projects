@@ -17,3 +17,12 @@ projects:
     - external-mcp
     - demo
     createdAt: 1794273963389
+  llm-openrouter:
+    id: zdb11a2o5x
+    description: LLM proxy over OpenRouter (Other OpenAI Compatible provider) with
+      subscription auth, model allow-list, output-token quota and exact cache
+    tags:
+    - llm-proxy
+    - openrouter
+    - demo
+    createdAt: 1794274523116

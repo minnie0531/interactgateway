@@ -1,0 +1,15 @@
+kind: OpenAI
+apiVersion: api.ibm.com/v1
+metadata:
+  name: OpenAIModels-mzwo4
+  namespace: llm-openrouter
+  version: 1.0.0
+  tags: []
+  domain: ai-platform
+  labels:
+    gatewayTypes:
+      - nano
+spec:
+  tlsClientProfile: sample-tls-client-profile:1.0.0
+  operation:
+    models: {}

@@ -1,0 +1,15 @@
+kind: If
+apiVersion: api.ibm.com/v1
+metadata:
+  name: If-mzwo4
+  namespace: llm-openrouter
+  version: 1.0.0
+  tags: []
+  domain: ai-platform
+  labels:
+    gatewayTypes:
+      - nano
+spec:
+  condition: ($pathParameter('a_model_id'))
+  execute:
+    - $ref: llm-openrouter:Set-mzwo4:1.0.0

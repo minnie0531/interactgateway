@@ -1,0 +1,37 @@
+kind: OperationSwitch
+apiVersion: api.ibm.com/v1
+metadata:
+  name: OperationSwitch-mzwo4
+  namespace: llm-openrouter
+  version: 1.0.0
+  tags: []
+  domain: ai-platform
+  labels:
+    gatewayTypes:
+      - nano
+spec:
+  cases:
+    - conditions:
+        - verbPath:
+            path: /chat/completions
+            verb: POST
+      execute:
+        - $ref: llm-openrouter:OpenAIChatCompletions-mzwo4:1.0.0
+    - conditions:
+        - verbPath:
+            path: /embeddings
+            verb: POST
+      execute:
+        - $ref: llm-openrouter:OpenAIEmbeddings-mzwo4:1.0.0
+    - conditions:
+        - verbPath:
+            path: /models
+            verb: GET
+      execute:
+        - $ref: llm-openrouter:OpenAIModels-mzwo4:1.0.0
+    - conditions:
+        - verbPath:
+            path: /models/{a_model_id}
+            verb: GET
+      execute:
+        - $ref: llm-openrouter:OpenAIModelsId-mzwo4:1.0.0
