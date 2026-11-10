@@ -27,6 +27,11 @@ spec:
     capabilities:
     - chat
     - completions
+  - id: nvidia/nemotron-3.5-super-vl:free
+    displayName: Nemotron 3.5 Super VL (free)
+    capabilities:
+    - chat
+    - completions
   plan:
     $ref: llm-openrouter:plan-openrouter-proxy-mzwo4:1.0.0
   policy-sequence:
