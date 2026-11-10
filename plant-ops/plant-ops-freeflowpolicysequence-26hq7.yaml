@@ -13,8 +13,11 @@ spec:
   main:
   - $ref: plant-ops:ExtractIdentity-zmuoa:1.0.0
   - $ref: plant-ops:Authenticate-sn6c7:1.0.0
+  - $ref: plant-ops:ExtractIdentity-user-26hq7:1.0.0
+  - $ref: plant-ops:Authenticate-user-26hq7:1.0.0
   - $ref: plant-ops:sqli-filter-26hq7:1.0.0
   - $ref: plant-ops:invoke-26hq7:1.0.0
+  - $ref: plant-ops:parse-response-26hq7:1.0.0
   - $ref: plant-ops:redact-pii-26hq7:1.0.0
   monitoring:
     $ref: plant-ops:telemetry-26hq7:1.0.0

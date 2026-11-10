@@ -1,0 +1,14 @@
+kind: Parse
+apiVersion: api.ibm.com/v1
+metadata:
+  name: parse-response-26hq7
+  namespace: plant-ops
+  version: 1.0.0
+  tags: []
+  labels:
+    gatewayTypes:
+      - nano
+spec:
+  documentType:
+    json: {}
+  input: response

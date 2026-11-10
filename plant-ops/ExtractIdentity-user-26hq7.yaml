@@ -1,0 +1,16 @@
+kind: ExtractIdentity
+apiVersion: api.ibm.com/v1
+metadata:
+  name: ExtractIdentity-user-26hq7
+  namespace: plant-ops
+  version: 1.0.0
+  tags: []
+  labels:
+    gatewayTypes:
+      - nano
+spec:
+  credentialType:
+    oauth2:
+      httpHeader:
+        name: Authorization
+  namespace: user

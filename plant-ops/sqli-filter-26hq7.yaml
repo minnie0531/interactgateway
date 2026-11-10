@@ -15,7 +15,6 @@ spec:
     predefined:
     - likeMatch
     - keywordInjection
-    - orAndAttack
     - metacharacters
     - commands
     custom: []

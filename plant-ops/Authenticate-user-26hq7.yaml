@@ -1,0 +1,16 @@
+kind: Authenticate
+apiVersion: api.ibm.com/v1
+metadata:
+  name: Authenticate-user-26hq7
+  namespace: plant-ops
+  version: 1.0.0
+  tags: []
+  labels:
+    gatewayTypes:
+      - nano
+spec:
+  operation:
+    oauth2:
+      providers:
+        - ibm-verify
+  namespace: user
